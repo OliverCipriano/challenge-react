@@ -7,14 +7,15 @@ const List: React.FC = () => {
   const [filterText, setFilterText] = useState<string>("");
 
 
-  const handleChange = async (event: any) => {
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
-      setFilterText(event.target.value);
+      const value = event.target.value;
+      setFilterText(value);
 
-      const response = await fetch(`https://api.disneyapi.dev/character?name=${filterText}`);
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`);
-      }
+      const response = await fetch(`https://api.disneyapi.dev/character?name=${encodeURIComponent(value)}`);
+      
+      if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+      
       
       const jsonData = await response.json();
       const list: Item[] = jsonData?.data?.length > 0 ? jsonData?.data : [];
