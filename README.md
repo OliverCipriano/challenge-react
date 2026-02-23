@@ -1,17 +1,18 @@
-# Mini Challenge
+# Disney Character Search – Technical Challenge
 
-## Descripción
+This project is based on a React technical challenge.
 
-En este reto, tienes que trabajar sobre una pequeña aplicación en React que se conecta a la API de Disney para mostrar un listado de personajes. El código que te proporcionamos tiene un error en la implementación de búsqueda. Tu tarea es identificar el problema y corregirlo.
+## Bug Fix
 
-## Requisitos
+The original implementation had a search issue caused by React's asynchronous state updates.
+The API request was using a stale state value, causing the search results to lag one character behind.
 
-Node.js v20.17.0
+### Fix applied
 
-## Instrucciones
+I corrected the issue by using the current input value directly when making the API request instead of relying on the outdated state variable.
 
-1. Levanta la aplicación
-2. Corrige el error
-3. Responde la pregunta de GetOnBoard.
+## Tech Stack
 
-¡Buena suerte!
+- React
+- TypeScript
+- Disney API
